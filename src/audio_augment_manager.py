@@ -4,38 +4,35 @@ import soundfile as sf
 import inspect
 from inspect import signature
 
+
 class Audio_augment_manager:
     def __init__(
-      self, audio, augment_bp:dict
-    ):
+            self, audio, 
+            processes={
+                "append_noise":{"args":None},
+                "apply_reverberation":{"args":None},
+                "change_pitch":{"args":None},
+                "change_speed":{"args":None}
+            }
+        ):
         self.__audio=audio
-        self.__augment_bp = augment_bp
-    
-    def get_original_audio(self):
-        return self.__audio
-
-    def get_augment_blueprint(self):
-        return self.__augment_bp
+        self.__processes=processes
 
     def __call__(self):
-        for aug_type, argments in self.__augment_bp.items():
+        for aug_type, argments in self.__processes:
             pass
 
-    def get_augment_type_dict(self):
-        return {
-            "d":signature(),
-            "ds":signature()
-        }
+    def apply_processing():
+        pass
 
-def append_write_noise():
+def append_write_noise(audio):
     pass
 
-def apply_reverberation():
+def apply_reverberation(audio):
     pass
 
-def change_pitch():
+def change_pitch(audio):
     pass
 
-def change_speed(self, rate:float=0.75):
-    return librosa.effects.time_stretch(self.__audio, rate=rate)
-
+def change_speed(audio, rate:float=0.75):
+    return librosa.effects.time_stretch(audio, rate=rate)
